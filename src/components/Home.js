@@ -8,10 +8,10 @@ const Home = () => {
     <div>
         <h2>Home</h2>
         <pre>{JSON.stringify(user, null, 2)}</pre>
-        <button onClick={async () => {
+        {user ? <button onClick={() => setUser(null)}>Logout</button> : <button onClick={async () => {
                 const user = await login()
                 setUser(user);
-            }}>Login</button>
+            }}>Login</button>}
     </div>
   )
 }

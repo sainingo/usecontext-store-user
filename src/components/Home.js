@@ -1,12 +1,17 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../UserContext'
+import { login } from '../utils/UserLogin'
 
 const Home = () => {
-    const msg = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext)
   return (
     <div>
         <h2>Home</h2>
-        <p>{msg}</p>
+        <pre>{JSON.stringify(user, null, 2)}</pre>
+        <button onClick={async () => {
+                const user = await login()
+                setUser(user);
+            }}>Login</button>
     </div>
   )
 }
